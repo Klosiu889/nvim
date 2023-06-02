@@ -1,0 +1,12 @@
+require("klosiu.plugins-setup")
+require("klosiu.core.colorscheme")
+require("klosiu.core.options")
+require("klosiu.core.keymaps")
+require("klosiu.plugins.nvim-tree")
+require("klosiu.plugins.lualine")
+require("klosiu.plugins.nvim-cmp")
+require("klosiu.plugins.telescope")
+require("klosiu.plugins.autopairs")
+require("klosiu.plugins.gitsigns")
+require("klosiu.plugins.lsp")
+
