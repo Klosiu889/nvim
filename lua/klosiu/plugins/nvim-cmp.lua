@@ -4,7 +4,7 @@ if not status_lsp then
 end
 lsp.preset({})
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
 
@@ -18,4 +18,8 @@ if not status_cmp then
   return
 end
 
-
+cmp.setup({
+  mapping = {
+    ['<Enter>'] = cmp.mapping.confirm({select = false}),
+  }
+})

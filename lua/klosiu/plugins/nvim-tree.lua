@@ -1,4 +1,4 @@
-local status, nvim_tree = pcall(require, "nvim-tree")
+local status, nvim_tree = pcall(require, 'nvim-tree')
 if not status then
   return
 end
@@ -14,8 +14,8 @@ nvim_tree.setup({
     icons = {
       glyphs = {
         folder = {
-          arrow_closed = "", -- arrow when folder is closed
-          arrow_open = "", -- arrow when folder is open
+          arrow_closed = '', -- arrow when folder is closed
+          arrow_open = '', -- arrow when folder is open
         },
       },
     },
@@ -27,4 +27,4 @@ nvim_tree.setup({
       },
     },
   },
-})  
+})

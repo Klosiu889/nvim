@@ -25,21 +25,21 @@ end
 
 return packer.startup(function(use)
   --Packer can manage itself
-  use { "wbthomason/packer.nvim" }
-  
+  use { 'wbthomason/packer.nvim' }
+
   -- necessary lua functions
-  use { "nvim-lua/plenary.nvim" }
+  use { 'nvim-lua/plenary.nvim' }
 
   -- Color schemes
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use { "sainnhe/sonokai" }
-  use { "bluz71/vim-nightfly-guicolors" }
-  use { "EdenEast/nightfox.nvim" }
-  use { "navarasu/onedark.nvim" }
-  use { "rmehri01/onenord.nvim", branch = "main" }
+  use { 'catppuccin/nvim', as = 'catppuccin' }
+  use { 'sainnhe/sonokai' }
+  use { 'bluz71/vim-nightfly-guicolors' }
+  use { 'EdenEast/nightfox.nvim' }
+  use { 'navarasu/onedark.nvim' }
+  use { 'rmehri01/onenord.nvim', branch = 'main' }
 
   -- LSP
-  use { 
+  use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     requires = {
@@ -62,32 +62,38 @@ return packer.startup(function(use)
 
   -- File navigation
   use {
-    "nvim-telescope/telescope.nvim", tag = "0.1.1",
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-  use { "nvim-tree/nvim-tree.lua" }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-tree/nvim-tree.lua' }
 
   -- treesitter
-  use { 
-    "nvim-treesitter/nvim-treesitter",
+  use {
+    'nvim-treesitter/nvim-treesitter',
     run = function()
-      require("nvim-treesitter.install").update({ with_sync = true })
+      require('nvim-treesitter.install').update({ with_sync = true })
     end,
   }
 
   -- auto closing
-  use { "windwp/nvim-autopairs" }
-  use { "windwp/nvim-ts-autotag" }
+  use { 'windwp/nvim-autopairs' }
+  use { 'windwp/nvim-ts-autotag' }
 
   -- git
-  use { "lewis6991/gitsigns.nvim" }
+  use {  'lewis6991/gitsigns.nvim' }
+
+  -- window management
+  use { 'christoomey/vim-tmux-navigator' } -- switching between windows
+  use { 'szw/vim-maximizer' } -- maximizes and restores current window
 
   -- Other
-  use { "ThePrimeagen/vim-be-good" } -- vim tutorial
-  use { "tpope/vim-surround" } -- surround text with characters
-  use { "kyazdani42/nvim-web-devicons" } -- icons
-  use { "nvim-lualine/lualine.nvim" } -- status line
+  use { 'ThePrimeagen/vim-be-good' } -- vim tutorial
+  use { 'tpope/vim-surround' } -- surround text with characters
+  use { 'kyazdani42/nvim-web-devicons' } -- icons
+  use { 'nvim-lualine/lualine.nvim' } -- status line
+  use { 'vim-scripts/ReplaceWithRegister' } -- replace text with register
+  use { 'numToStr/Comment.nvim' } -- commenting code fragment
 
   if packer_bootstrap then
     require('packer').sync()

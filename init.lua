@@ -9,4 +9,5 @@ require("klosiu.plugins.telescope")
 require("klosiu.plugins.autopairs")
 require("klosiu.plugins.gitsigns")
 require("klosiu.plugins.lsp")
+require("klosiu.plugins.comment")
 
