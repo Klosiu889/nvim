@@ -87,6 +87,9 @@ return packer.startup(function(use)
   use { 'christoomey/vim-tmux-navigator' } -- switching between windows
   use { 'szw/vim-maximizer' } -- maximizes and restores current window
 
+  -- nvChad
+  use { 'NvChad/nvterm' }
+
   -- Other
   use { 'ThePrimeagen/vim-be-good' } -- vim tutorial
   use { 'tpope/vim-surround' } -- surround text with characters

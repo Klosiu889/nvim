@@ -10,4 +10,6 @@ require("klosiu.plugins.autopairs")
 require("klosiu.plugins.gitsigns")
 require("klosiu.plugins.lsp")
 require("klosiu.plugins.comment")
+require("klosiu.plugins.treesitter")
+require("klosiu.plugins.nvterm")
 
