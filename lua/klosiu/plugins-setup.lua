@@ -1,104 +1,74 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+   "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
-  augroup end
-]])
-
-local status, packer = pcall(require, 'packer')
-if not status then
-  return
-end
-
-return packer.startup(function(use)
-  --Packer can manage itself
-  use { 'wbthomason/packer.nvim' }
-
+require("lazy").setup({
   -- necessary lua functions
-  use { 'nvim-lua/plenary.nvim' }
+  { 'nvim-lua/plenary.nvim' },
 
   -- Color schemes
-  use { 'catppuccin/nvim', as = 'catppuccin' }
-  use { 'sainnhe/sonokai' }
-  use { 'bluz71/vim-nightfly-guicolors' }
-  use { 'EdenEast/nightfox.nvim' }
-  use { 'navarasu/onedark.nvim' }
-  use { 'rmehri01/onenord.nvim', branch = 'main' }
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+  { 'sainnhe/sonokai' },
+  { 'bluz71/vim-nightfly-guicolors' },
+  { 'EdenEast/nightfox.nvim' },
+  { 'navarasu/onedark.nvim' },
+  { 'rmehri01/onenord.nvim', branch = 'main' },
 
   -- LSP
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    requires = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {                                      -- Optional
-        'williamboman/mason.nvim',
-        run = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
-      },
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},     -- Required
-      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
-    }
-  }
+  { 'williamboman/mason.nvim' },
+  { 'williamboman/mason-lspconfig.nvim' },
+  { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
+  { 'neovim/nvim-lspconfig' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/nvim-cmp' },
+  { 'L3MON4D3/LuaSnip' },
 
   -- File navigation
-  use {
+  {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use { 'nvim-tree/nvim-tree.lua' }
+    dependencies = { {'nvim-lua/plenary.nvim'} }
+  },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  { 'nvim-tree/nvim-tree.lua' },
 
   -- treesitter
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = function()
+    build = function()
       require('nvim-treesitter.install').update({ with_sync = true })
     end,
-  }
+  },
+
+  { 'github/copilot.vim' },
 
   -- auto closing
-  use { 'windwp/nvim-autopairs' }
-  use { 'windwp/nvim-ts-autotag' }
+  { 'windwp/nvim-autopairs' },
+  { 'windwp/nvim-ts-autotag' },
 
   -- git
-  use {  'lewis6991/gitsigns.nvim' }
+  { 'lewis6991/gitsigns.nvim' },
 
   -- window management
-  use { 'christoomey/vim-tmux-navigator' } -- switching between windows
-  use { 'szw/vim-maximizer' } -- maximizes and restores current window
+  { 'christoomey/vim-tmux-navigator' }, -- switching between windows
+  { 'szw/vim-maximizer' }, -- maximizes and restores current window
 
   -- nvChad
-  use { 'NvChad/nvterm' }
+  { 'NvChad/nvterm' },
 
   -- Other
-  use { 'ThePrimeagen/vim-be-good' } -- vim tutorial
-  use { 'tpope/vim-surround' } -- surround text with characters
-  use { 'kyazdani42/nvim-web-devicons' } -- icons
-  use { 'nvim-lualine/lualine.nvim' } -- status line
-  use { 'vim-scripts/ReplaceWithRegister' } -- replace text with register
-  use { 'numToStr/Comment.nvim' } -- commenting code fragment
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+  { 'ThePrimeagen/vim-be-good' }, -- vim tutorial
+  { 'tpope/vim-surround' }, -- surround text with characters
+  { 'kyazdani42/nvim-web-devicons' }, -- icons
+  { 'nvim-lualine/lualine.nvim' }, -- status line
+  { 'vim-scripts/ReplaceWithRegister' }, -- replace text with register
+  { 'numToStr/Comment.nvim' }, -- commenting code fragment
+})
