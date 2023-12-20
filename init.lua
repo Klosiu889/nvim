@@ -1,15 +1,19 @@
-require("klosiu.plugins-setup")
-require("klosiu.core.colorscheme")
-require("klosiu.core.options")
-require("klosiu.core.keymaps")
-require("klosiu.plugins.nvim-tree")
-require("klosiu.plugins.lualine")
-require("klosiu.plugins.nvim-cmp")
-require("klosiu.plugins.telescope")
-require("klosiu.plugins.autopairs")
-require("klosiu.plugins.gitsigns")
-require("klosiu.plugins.lsp")
-require("klosiu.plugins.comment")
-require("klosiu.plugins.treesitter")
-require("klosiu.plugins.nvterm")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
+require("vim-options")
+require("keymaps")
+require("lazy").setup({
+    {import = "plugins"}, 
+    {import = "plugins.lsp"}
+})
