@@ -1,6 +1,7 @@
 return {
     'windwp/nvim-autopairs',
-    'windwp/nvim-ts-autotag',
+    event = 'InsertEnter',
+
     config = function()
         require('nvim-autopairs').setup({
             check_ts = true,
