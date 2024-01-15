@@ -71,9 +71,14 @@ return {
             capabilities = capabilities,
         })
 
+        local file_path = vim.fn.stdpath('config') .. '/lua/plugins/lsp'
         lspconfig["clangd"].setup({
             on_attach = on_attach,
             capabilities = capabilities,
+            cmd = {
+                'clangd',
+                '-compile-commands-dir=' .. file_path,
+            }
         })
 
         lspconfig["cmake"].setup({
