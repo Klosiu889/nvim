@@ -70,5 +70,60 @@ return {
             on_attach = on_attach,
             capabilities = capabilities,
         })
-    end
+
+        lspconfig["clangd"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
+        lspconfig["cmake"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
+        lspconfig["pyright"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
+        lspconfig["html"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
+        lspconfig["cssls"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
+        lspconfig["tsserver"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
+        lspconfig["bashls"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
+        lspconfig["lua_ls"].setup({
+              capabilities = capabilities,
+              on_attach = on_attach,
+              settings = { -- custom settings for lua
+                Lua = {
+                  -- make the language server recognize "vim" global
+                  diagnostics = {
+                    globals = { "vim" },
+                  },
+                  workspace = {
+                    -- make language server aware of runtime files
+                    library = {
+                      [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                      [vim.fn.stdpath("config") .. "/lua"] = true,
+                    },
+                  },
+                },
+              },
+            })
+        end
 }
