@@ -11,9 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("vim-options")
-require("keymaps")
+require("klosiu.vim-options")
+require("klosiu.keymaps")
 require("lazy").setup({
-    {import = "plugins"}, 
-    {import = "plugins.lsp"}
+    {import = "klosiu.plugins"},
+    {import = "klosiu.plugins.lsp"}
 })

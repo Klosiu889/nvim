@@ -6,6 +6,11 @@ return {
 
         vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 
+        vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
+        vim.keymap.set('n', '<leader>ef', ':NvimTreeFocus<CR>')
+        vim.keymap.set('n', '<leader>ec', ':NvimTreeCollapse<CR>')
+        vim.keymap.set('n', '<leader>er', ':NvimTreeRefresh<CR>')
+
         require('nvim-tree').setup({
             filters = {
                 dotfiles = false,
