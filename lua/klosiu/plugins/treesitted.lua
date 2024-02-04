@@ -1,12 +1,11 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
-    event = { "BufReadPre", "BufNewFile" },
+    "nvim-treesitter/nvim-treesitter",
     build = function()
-        require('nvim-treesitter.install').update({ with_sync = true })
+        require("nvim-treesitter.install").update({ with_sync = true })
     end,
 
     config = function()
-        require('nvim-treesitter.configs').setup({
+        require("nvim-treesitter.configs").setup({
             highlight = { enable = true },
             indent = { enable = true },
             autotag = { enable = true },
@@ -28,5 +27,5 @@ return {
             },
             auto_install = true,
         })
-    end
+    end,
 }
