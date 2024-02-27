@@ -132,6 +132,21 @@ return {
             capabilities = capabilities,
         })
 
+        lspconfig["dockerls"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
+        lspconfig["gopls"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
+        lspconfig["hls"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
