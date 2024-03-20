@@ -125,6 +125,9 @@ return {
         lspconfig["typos_lsp"].setup({
             on_attach = on_attach,
             capabilities = capabilities,
+            init_options = {
+                diagnosticSeverity = "Warning",
+            },
         })
 
         lspconfig["jsonls"].setup({
@@ -165,6 +168,11 @@ return {
                     },
                 },
             },
+        })
+
+        lspconfig["ltex"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
         })
     end,
 }

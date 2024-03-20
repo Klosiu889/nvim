@@ -1,20 +1,20 @@
 return {
-   'kyazdani42/nvim-tree.lua',
-   config = function()
+    "kyazdani42/nvim-tree.lua",
+    config = function()
         vim.g.loaded = 1
         vim.g.loaded_netrwPlugin = 1
 
         vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 
-        vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
-        vim.keymap.set('n', '<leader>ef', ':NvimTreeFocus<CR>')
-        vim.keymap.set('n', '<leader>ec', ':NvimTreeCollapse<CR>')
-        vim.keymap.set('n', '<leader>er', ':NvimTreeRefresh<CR>')
+        vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>")
+        vim.keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>")
+        vim.keymap.set("n", "<leader>ec", ":NvimTreeCollapse<CR>")
+        vim.keymap.set("n", "<leader>er", ":NvimTreeRefresh<CR>")
 
-        require('nvim-tree').setup({
+        require("nvim-tree").setup({
             filters = {
                 dotfiles = false,
-                exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
+                exclude = { vim.fn.stdpath("config") .. "/lua/custom" },
             },
             disable_netrw = true,
             hijack_netrw = true,
@@ -86,5 +86,5 @@ return {
                 },
             },
         })
-   end
+    end,
 }
