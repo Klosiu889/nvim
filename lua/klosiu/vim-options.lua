@@ -1,40 +1,51 @@
-local opt = vim.opt
-
 -- line numbers
-opt.relativenumber = true
-opt.number = true
+vim.opt.relativenumber = true
+vim.opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.smartindent = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
 
 -- line wrapping
-opt.wrap = false
+vim.opt.wrap = false
 
 -- search
-opt.ignorecase = true
-opt.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- cursor line
-opt.cursorline = true
+vim.opt.cursorline = true
 
 -- appearance
-opt.termguicolors = true
-opt.signcolumn = 'yes'
+vim.opt.termguicolors = true
+vim.opt.signcolumn = "yes"
 
 -- backspace
-opt.backspace = 'indent,eol,start'
+vim.opt.backspace = "indent,eol,start"
 
 -- clipboard
-opt.clipboard:append('unnamedplus')
+vim.opt.clipboard = "unnamedplus"
 
 -- split
-opt.splitbelow = true
-opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- mouse
-opt.mouse = 'a'
+vim.opt.mouse = "a"
 
-opt.iskeyword:append('-')
+vim.opt.iskeyword:append("-")
+
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 5
+
+-- Decrease update time
+vim.opt.updatetime = 250
+
+-- Decrease mapped sequence wait time
+-- Displays which-key popup sooner
+vim.opt.timeoutlen = 300
+
+-- Save undo history
+vim.opt.undofile = true
