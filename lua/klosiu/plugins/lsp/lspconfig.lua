@@ -103,18 +103,8 @@ return {
                         capabilities = capabilities,
                         settings = {
                             ltex = {
-                                language = "auto",
+                                language = "en_US",
                             },
-                        },
-                    })
-                end,
-
-                ["typos_lsp"] = function()
-                    lspconfig.typos_lsp.setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                        init_options = {
-                            diagnosticSeverity = "Warning",
                         },
                     })
                 end,

@@ -28,9 +28,12 @@ return {
                 :find()
         end
 
-        vim.keymap.set("n", "ht", function()
+        vim.keymap.set("n", "<leader>ht", function()
             toggle_telescope(harpoon:list())
         end, { desc = "Toggle harpoon quick menu" })
+        vim.keymap.set("n", "<leader>ho", function()
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+        end)
 
         vim.keymap.set("n", "<leader>hm", function()
             harpoon:list():add()
