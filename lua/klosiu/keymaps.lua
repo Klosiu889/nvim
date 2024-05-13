@@ -3,8 +3,8 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<ESC>", "<cmd>nohl<CR>", { desc = "Disable highlights" })
 vim.keymap.set("n", "x", '"_x')
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
+vim.keymap.set("v", "J", "<ESC><cmd>'<,'>m '>+1<CR>gv=gv", { desc = "Move line down" })
+vim.keymap.set("v", "K", "<ESC><cmd>'<,'>m '<-2<CR>gv=gv", { desc = "Move line up" })
 
 vim.keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
 vim.keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
