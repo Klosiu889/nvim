@@ -32,6 +32,7 @@ return {
                 { desc = "List open buffers in current neovim instance" }
             )
             vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "List available help tags" })
+            vim.keymap.set("n", "<leader>fn", "<cmd>Telescope noice<cr>", { desc = "List noice messages" })
             vim.keymap.set(
                 "n",
                 "<leader>th",

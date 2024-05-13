@@ -6,10 +6,10 @@ return {
 
         vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 
-        vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { desc = "Toggle nvim-tree" })
-        vim.keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>", { desc = "Focus nvim-tree" })
-        vim.keymap.set("n", "<leader>ec", ":NvimTreeCollapse<CR>", { desc = "Collapse nvim-tree" })
-        vim.keymap.set("n", "<leader>er", ":NvimTreeRefresh<CR>", { desc = "Refresh nvim-tree" })
+        vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle nvim-tree" })
+        vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Focus nvim-tree" })
+        vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse nvim-tree" })
+        vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh nvim-tree" })
 
         require("nvim-tree").setup({
             filters = {

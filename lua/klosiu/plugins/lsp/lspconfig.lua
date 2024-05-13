@@ -52,7 +52,7 @@ return {
             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
             opts.desc = "Restart LSP"
-            vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
+            vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
 
             opts.desc = "Function signature help"
             vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
