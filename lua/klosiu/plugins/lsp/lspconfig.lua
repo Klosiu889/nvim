@@ -42,15 +42,6 @@ return {
             opts.desc = "Show line diagnostics"
             vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-            opts.desc = "Go to previous diagnostic"
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-            opts.desc = "Go to next diagnostic"
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
-            opts.desc = "Show documentation for what is under cursor"
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
             opts.desc = "Restart LSP"
             vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
 
