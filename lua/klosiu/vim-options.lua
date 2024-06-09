@@ -58,6 +58,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank()
     end,
 })
-
--- latex
-vim.g.tex_flavor = "latex"
