@@ -94,7 +94,7 @@ return {
                         capabilities = capabilities,
                         settings = {
                             ltex = {
-                                language = "en_US",
+                                language = "en-US",
                             },
                         },
                     })
