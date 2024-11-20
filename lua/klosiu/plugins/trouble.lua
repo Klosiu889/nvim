@@ -21,6 +21,7 @@ return {
                 information = "",
                 other = "",
             },
+            focus = true,
         })
     end,
 }
