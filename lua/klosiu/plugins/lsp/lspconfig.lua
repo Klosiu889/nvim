@@ -57,6 +57,12 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
+        lspconfig.hls.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            ghcOptions = { "-Wall", "-fdiagnostics-color=always" },
+        })
+
         mason_lspconfig.setup({
             handlers = {
                 function(server_name)

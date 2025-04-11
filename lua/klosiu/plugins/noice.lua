@@ -11,6 +11,8 @@ return {
 
         notify.setup({
             background_colour = "#000000",
+            timeout = "1",
+            max_width = "50",
         })
 
         noice.setup({

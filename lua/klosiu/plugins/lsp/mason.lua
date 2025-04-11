@@ -27,7 +27,6 @@ return {
             ensure_installed = {
                 "ts_ls",
                 "html",
-                "cssls",
                 "lua_ls",
                 "clangd",
                 "pyright",
@@ -44,7 +43,7 @@ return {
                 "isort",
                 "black",
                 "pylint",
-                "eslint_d",
+                "clang-format",
             },
         })
     end,
