@@ -32,8 +32,6 @@ return {
                 "pyright",
                 "rust_analyzer",
             },
-
-            automatic_servers_installation = true,
         })
 
         mason_tool_installer.setup({

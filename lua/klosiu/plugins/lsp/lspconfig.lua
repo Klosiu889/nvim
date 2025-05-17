@@ -2,14 +2,11 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
     },
     config = function()
-        local lspconfig = require("lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
-        local mason_lspconfig = require("mason-lspconfig")
 
         local opts = { noremap = true, silent = true }
         local on_attach = function(_, bufnr)
@@ -57,66 +54,66 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-        lspconfig.hls.setup({
+        local default_settings_servers = {
+            "rust_analyzer",
+            "html-lsp html",
+            "jsonls",
+            "pyright",
+            "tailwindcss",
+            "ts_ls",
+            "yamlls",
+        }
+
+        for _, v in ipairs(default_settings_servers) do
+            vim.lsp.config(v, {
+                on_attach = on_attach,
+                capabilities = capabilities,
+            })
+        end
+
+        vim.lsp.config("lua_ls", {
             on_attach = on_attach,
             capabilities = capabilities,
-            ghcOptions = { "-Wall", "-fdiagnostics-color=always" },
+            settings = {
+                Lua = {
+                    -- make the language server recognize "vim" global
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        -- make language server aware of runtime files
+                        library = {
+                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                            [vim.fn.stdpath("config") .. "/lua"] = true,
+                        },
+                    },
+                },
+            },
         })
 
-        mason_lspconfig.setup({
-            handlers = {
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                    })
-                end,
+        vim.lsp.config("jdtls", {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+        })
 
-                ["lua_ls"] = function()
-                    lspconfig.lua_ls.setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                        settings = { -- custom settings for lua
-                            Lua = {
-                                -- make the language server recognize "vim" global
-                                diagnostics = {
-                                    globals = { "vim" },
-                                },
-                                workspace = {
-                                    -- make language server aware of runtime files
-                                    library = {
-                                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                        [vim.fn.stdpath("config") .. "/lua"] = true,
-                                    },
-                                },
-                            },
-                        },
-                    })
-                end,
+        vim.lsp.config("ltex", {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                ltex = {
+                    language = "en-US",
+                },
+            },
+        })
 
-                ["ltex"] = function()
-                    lspconfig.ltex.setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                        settings = {
-                            ltex = {
-                                language = "en-US",
-                            },
-                        },
-                    })
-                end,
-
-                ["clangd"] = function()
-                    local file_path = vim.fn.stdpath("config") .. "/lua/plugins/lsp"
-                    lspconfig.clangd.setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                        cmd = {
-                            "clangd",
-                            "-compile-commands-dir=" .. file_path,
-                        },
-                    })
-                end,
+        local clang_file_path = vim.fn.stdpath("config") .. "/lua/plugins/lsp"
+        vim.lsp.config("clangd", {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            cmd = {
+                "clangd",
+                "-compile-commands-dir=" .. clang_file_path,
             },
         })
     end,
