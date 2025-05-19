@@ -1,7 +1,7 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.5",
+        tag = "0.1.8",
         dependencies = {
             { "nvim-lua/plenary.nvim" },
         },
@@ -30,6 +30,12 @@ return {
                 "<leader>fb",
                 "<cmd>Telescope buffers<cr>",
                 { desc = "List open buffers in current neovim instance" }
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>fi",
+                "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+                { desc = "Find string in current file as you type" }
             )
             vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "List available help tags" })
             vim.keymap.set("n", "<leader>fn", "<cmd>Telescope noice<cr>", { desc = "List noice messages" })
