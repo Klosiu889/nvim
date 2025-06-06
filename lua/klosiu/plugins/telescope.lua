@@ -7,11 +7,35 @@ return {
         },
 
         config = function()
+            require("telescope").setup({
+                defaults = {
+                    vimgrep_arguments = {
+                        "rg",
+                        "--color=never",
+                        "--no-heading",
+                        "--with-filename",
+                        "--line-number",
+                        "--column",
+                        "--smart-case",
+                        "--hidden",
+                        "--follow",
+                        "--glob",
+                        "!.git/",
+                    },
+                },
+            })
+
             vim.keymap.set(
                 "n",
                 "<leader>ff",
                 "<cmd>Telescope find_files<cr>",
                 { desc = "Find files within current working directory, respects .gitignore" }
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>fa",
+                "<cmd>Telescope find_files hidden=true follow=true<cr>",
+                { desc = "Find all files within current working directory, respects .gitignore" }
             )
             vim.keymap.set(
                 "n",
