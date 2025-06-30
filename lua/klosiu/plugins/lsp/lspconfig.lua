@@ -84,14 +84,6 @@ return {
             root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
         })
 
-        vim.lsp.config("ltex", {
-            settings = {
-                ltex = {
-                    language = "en-US",
-                },
-            },
-        })
-
         vim.lsp.config("clangd", {
             cmd = {
                 "clangd",
