@@ -15,7 +15,7 @@ return {
                 json = { "prettier" },
                 yaml = { "prettier" },
                 lua = { "stylua" },
-                python = { "isort", "black" },
+                python = { "ruff", "mypy" },
                 cpp = { "clang-format" },
                 c = { "clang-format" },
             },

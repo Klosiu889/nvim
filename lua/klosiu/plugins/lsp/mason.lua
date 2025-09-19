@@ -38,9 +38,8 @@ return {
             ensure_installed = {
                 "prettier",
                 "stylua",
-                "isort",
-                "black",
-                "pylint",
+                "ruff",
+                "mypy",
                 "clang-format",
             },
         })
