@@ -58,10 +58,12 @@ return {
 
         local default_settings_servers = mason_lspconfig.get_installed_servers()
         for _, v in ipairs(default_settings_servers) do
-            vim.lsp.config(v, {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            })
+            if v ~= "jdtls" then
+                vim.lsp.config(v, {
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                })
+            end
         end
 
         vim.lsp.config("lua_ls", {
@@ -78,10 +80,6 @@ return {
                     },
                 },
             },
-        })
-
-        vim.lsp.config("jdtls", {
-            root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
         })
 
         vim.lsp.config("clangd", {

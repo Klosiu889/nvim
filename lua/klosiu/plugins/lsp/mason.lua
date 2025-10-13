@@ -24,6 +24,11 @@ return {
         })
 
         mason_lspconfig.setup({
+            automatic_enable = {
+                exclude = {
+                    "jdtls",
+                },
+            },
             ensure_installed = {
                 "ts_ls",
                 "html",
