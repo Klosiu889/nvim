@@ -82,10 +82,11 @@ return {
             },
         })
 
-        vim.lsp.config("clangd", {
-            cmd = {
-                "clangd",
-                "-compile-commands-dir=" .. vim.fn.stdpath("config") .. "/lua/plugins/lsp",
+        vim.lsp.config("ltex", {
+            settings = {
+                ltex = {
+                    language = "pl-PL",
+                },
             },
         })
     end,
