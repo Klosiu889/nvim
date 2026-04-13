@@ -58,3 +58,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank()
     end,
 })
+
+vim.diagnostic.config({
+    signs = true,
+    underline = true,
+    virtual_text = true,
+    virtual_lines = false,
+    update_in_insert = true,
+    float = {
+        border = "rounded",
+        focusable = true,
+    },
+})
