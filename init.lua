@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("klosiu.vim-options")
 require("klosiu.keymaps")
+require("klosiu.autocmds")
 require("lazy").setup({
     { import = "klosiu.plugins" },
     { import = "klosiu.plugins.lsp" },
