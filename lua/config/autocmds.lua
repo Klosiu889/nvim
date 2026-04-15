@@ -1,3 +1,4 @@
+-- Auto treesitter parser download and activation
 vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("treesitter_magic", { clear = true }),
     callback = function(args)
@@ -52,6 +53,16 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Highlighting when yanking
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
+-- Java config
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "java",
     callback = function(args)
