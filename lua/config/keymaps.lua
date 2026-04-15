@@ -22,6 +22,13 @@ vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current t
 vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 
+vim.keymap.set("n", "<leader>vu", function()
+    vim.pack.update()
+end, { desc = "Update packages" })
+
+vim.cmd.packadd("nvim.undotree")
+vim.keymap.set("n", "<leader>u", "<cmd>Undotree<cr>", { desc = "Toggle undotree" })
+
 local function coerce_to(style)
     local old_name = vim.fn.expand("<cword>")
     if old_name == "" then

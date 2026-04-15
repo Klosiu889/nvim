@@ -1,24 +1,30 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
+require("vim._core.ui2").enable()
 
-require("klosiu.vim-options")
-require("klosiu.keymaps")
-require("klosiu.autocmds")
-require("lazy").setup({
-    { import = "klosiu.plugins" },
-    { import = "klosiu.plugins.lsp" },
-}, {
-    change_detection = {
-        notify = false,
-    },
-})
+require("config.vim-options")
+require("config.keymaps")
+require("config.autocmds")
+
+require("plugins.colorizer")
+require("plugins.catppuccin")
+require("plugins.lualine")
+
+require("plugins.lsp")
+require("plugins.cmp")
+require("plugins.formatting")
+require("plugins.linting")
+require("plugins.trouble")
+
+require("plugins.gitsigns")
+
+require("plugins.telescope")
+require("plugins.nvim-tree")
+require("plugins.harpoon")
+
+require("plugins.treesitter")
+require("plugins.markdown")
+require("plugins.surround")
+require("plugins.cloak")
+require("plugins.tmux")
+require("plugins.lazygit")
+require("plugins.which-key")
+require("plugins.jdtls")
