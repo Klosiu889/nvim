@@ -44,17 +44,13 @@ function M:setup()
 
         settings = {
             java = {
-                -- CHANGE 3: Add the formatting configuration
                 format = {
                     enabled = true,
                     settings = {
-                        -- This points to the file in your specific project root
                         url = root_dir .. "/eclipse-formatter.xml",
-                        profile = "GoogleStyle", -- Optional: Must match the profile name inside the XML file
+                        profile = "GoogleStyle",
                     },
                 },
-                -- Note: Your previous 'java = "/usr/..."' line inside settings was likely incorrect.
-                -- JDTLS uses the 'cmd' list (above) to know which Java to run.
             },
         },
         init_options = {

@@ -1,30 +1,58 @@
 require("vim._core.ui2").enable()
+if vim.loader then
+    vim.loader.enable()
+end
 
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 
-require("plugins.colorizer")
 require("plugins.catppuccin")
-require("plugins.lualine")
-
-require("plugins.lsp")
-require("plugins.cmp")
-require("plugins.formatting")
-require("plugins.linting")
-require("plugins.trouble")
-
-require("plugins.gitsigns")
 
 require("plugins.telescope")
 require("plugins.nvim-tree")
 require("plugins.harpoon")
 
-require("plugins.treesitter")
-require("plugins.markdown")
 require("plugins.surround")
 require("plugins.cloak")
-require("plugins.tmux")
 require("plugins.lazygit")
-require("plugins.which-key")
-require("plugins.jdtls")
+
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+    callback = function()
+        require("plugins.treesitter")
+        require("plugins.lsp")
+        require("plugins.jdtls")
+        require("plugins.formatting")
+        require("plugins.linting")
+        require("plugins.trouble")
+    end,
+    once = true
+})
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+    callback = function()
+        require("plugins.cmp")
+    end,
+    once = true
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        require("plugins.markdown")
+    end,
+    once = true,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.schedule(function()
+            require("plugins.which-key")
+            require("plugins.tmux")
+            require("plugins.gitsigns")
+            require("plugins.colorizer")
+            require("plugins.lualine")
+        end)
+    end,
+    once = true
+})
