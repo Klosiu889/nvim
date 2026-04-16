@@ -75,29 +75,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
         opts.desc = "Restart LSP"
-        vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
+        vim.keymap.set("n", "<leader>rs", "<cmd>lsp restart<CR>", opts)
 
         opts.desc = "Function signature help"
         vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
     end
 })
 
-
-local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = "󰠠 ",
+            [vim.diagnostic.severity.INFO] = " "
+        },
+    },
+})
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
-local default_settings_servers = mason_lspconfig.get_installed_servers()
-for _, v in ipairs(default_settings_servers) do
-    if v ~= "jdtls" then
-        vim.lsp.config(v, {
-            capabilities = capabilities,
-        })
-    end
-end
+vim.lsp.config("*", {
+    capabilities = capabilities
+})
 
 vim.lsp.config("lua_ls", {
     settings = {

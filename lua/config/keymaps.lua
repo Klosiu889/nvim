@@ -26,6 +26,7 @@ vim.keymap.set("n", "<leader>vu", function()
     vim.pack.update()
 end, { desc = "Update packages" })
 
+vim.keymap.set("n", "<leader>re", "<cmd>restart<cr>", { desc = "Restart Neovim (:restart)" })
 vim.cmd.packadd("nvim.undotree")
 vim.keymap.set("n", "<leader>u", "<cmd>Undotree<cr>", { desc = "Toggle undotree" })
 
