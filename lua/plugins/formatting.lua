@@ -2,7 +2,8 @@ vim.pack.add({
     "https://github.com/stevearc/conform.nvim",
 })
 
-require("conform").setup({
+local conform = require("conform")
+conform.setup({
     formatters_by_ft = {
         javascript = { "eslint_d", "prettier" },
         typescript = { "eslint_d", "prettier" },

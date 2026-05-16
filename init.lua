@@ -16,25 +16,14 @@ require("plugins.harpoon")
 require("plugins.surround")
 require("plugins.cloak")
 require("plugins.lazygit")
+require("plugins.treesitter")
 
-vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-    callback = function()
-        require("plugins.treesitter")
-        require("plugins.lsp")
-        require("plugins.jdtls")
-        require("plugins.formatting")
-        require("plugins.linting")
-        require("plugins.trouble")
-    end,
-    once = true
-})
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-    callback = function()
-        require("plugins.cmp")
-    end,
-    once = true
-})
+require("plugins.lsp")
+require("plugins.jdtls")
+require("plugins.formatting")
+require("plugins.linting")
+require("plugins.trouble")
+require("plugins.cmp")
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",

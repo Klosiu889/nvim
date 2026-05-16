@@ -1,6 +1,7 @@
 vim.pack.add({
     "https://github.com/hrsh7th/nvim-cmp",
     "https://github.com/hrsh7th/cmp-buffer",
+    "https://github.com/hrsh7th/cmp-cmdline",
     "https://github.com/hrsh7th/cmp-path",
     "https://github.com/saadparwaiz1/cmp_luasnip",
     "https://github.com/L3MON4D3/LuaSnip",
@@ -38,7 +39,6 @@ cmp.setup({
         { name = "buffer" },
         { name = "path" },
     }),
-
     formatting = {
         format = lspkind.cmp_format({
             maxwidth = 50,
@@ -54,4 +54,29 @@ cmp.setup({
             winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
         }),
     },
+})
+
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.insert({
+        ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { 'c' }),
+        ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'c' }),
+        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'c' }),
+        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'c' }),
+        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { 'c' }),
+        ["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { 'c' }),
+        ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = false }), { 'c' }),
+    }),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false }
 })

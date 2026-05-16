@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 
+vim.keymap.set("n", "<leader><leader>", "<cmd>so<cr>")
+
 vim.keymap.set("n", "<ESC>", "<cmd>nohl<CR>", { desc = "Disable highlights" })
 vim.keymap.set("n", "x", '"_x')
 

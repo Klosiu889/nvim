@@ -102,13 +102,15 @@ vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
             diagnostics = {
-                globals = { "vim" },
+                globals = { "vim", "hl" },
             },
             workspace = {
                 library = {
                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                     [vim.fn.stdpath("config") .. "/lua"] = true,
+                    ["/usr/share/hypr/stubs/"] = true
                 },
+                checkThirdParty = false
             },
         },
     },
